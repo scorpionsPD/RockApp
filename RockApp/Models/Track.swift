@@ -21,3 +21,7 @@ struct Track: Codable, Identifiable {
         case trackName, artistName, trackPrice, artworkUrl100, trackTimeMillis, releaseDate, trackViewUrl
     }
 }
+
+struct SearchResponse: Codable {
+    let results: [Track]
+}
