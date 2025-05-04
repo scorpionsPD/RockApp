@@ -15,7 +15,7 @@ struct TrackListView: View {
         NavigationView {
             Group {
                 if viewModel.isLoading {
-                    ProgressView("Loading tracks...")
+                    ProgressView(Strings.Titles.loading)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if let error = viewModel.errorMessage {
                     VStack(spacing: 16) {
@@ -24,7 +24,7 @@ struct TrackListView: View {
                             .multilineTextAlignment(.center)
                             .padding()
 
-                        Button("Retry") {
+                        Button(Strings.Titles.retry) {
                             Task {
                                 await viewModel.loadTracks()
                             }
@@ -41,7 +41,7 @@ struct TrackListView: View {
                     .listStyle(.plain)
                 }
             }
-            .navigationTitle("Rock Tracks")
+            .navigationTitle(Strings.Titles.rockTracks)
             .task {
                 await viewModel.loadTracks()
             }
@@ -67,7 +67,7 @@ private struct TrackRowView: View {
                     .font(.headline)
                 Text(track.artistName)
                     .font(.subheadline)
-                Text("$\(track.trackPrice ?? 0, specifier: "%.2f")")
+                Text(String(format: Strings.Format.price, track.trackPrice ?? 0))
                     .font(.caption)
             }
         }

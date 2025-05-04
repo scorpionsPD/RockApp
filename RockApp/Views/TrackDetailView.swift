@@ -31,19 +31,19 @@ struct TrackDetailView: View {
                     .font(.title)
                     .bold()
 
-                Text("Artist: \(viewModel.track.artistName)")
+                Text(Strings.Labels.artist + viewModel.track.artistName)
                     .font(.headline)
 
-                Text("Price: $\(viewModel.track.trackPrice ?? 0, specifier: "%.2f")")
+                Text(Strings.Labels.price + String(format: Strings.Format.price, viewModel.track.trackPrice ?? 0))
                     .font(.subheadline)
 
-                Text("Duration: \(viewModel.formattedDuration)")
+                Text(Strings.Labels.duration + viewModel.formattedDuration)
                     .font(.subheadline)
 
-                Text("Release Date: \(viewModel.formattedReleaseDate)")
+                Text(Strings.Labels.releaseDate + viewModel.formattedReleaseDate)
                     .font(.subheadline)
 
-                Button("More Details") {
+                Button(Strings.Titles.moreDetails) {
                     if let url = URL(string: viewModel.track.trackViewUrl) {
                         UIApplication.shared.open(url)
                     }
@@ -54,6 +54,6 @@ struct TrackDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Track Details")
+        .navigationTitle(Strings.Titles.trackDetails)
     }
 }
