@@ -24,7 +24,7 @@ class TrackListViewModel: ObservableObject {
             }
             errorMessage = nil
         } catch {
-            errorMessage = (error as? LocalizedError)?.errorDescription ?? "An unexpected error occurred"
+            errorMessage = (error as? LocalizedError)?.errorDescription ?? Strings.Errors.unknown
         }
         isLoading = false
     }

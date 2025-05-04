@@ -18,6 +18,7 @@ enum Strings {
 
     enum Errors {
         static let unknown = "An unexpected error occurred"
+        static let noValue = "N/A"
     }
 
     enum Format {

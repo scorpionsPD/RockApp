@@ -15,7 +15,7 @@ class TrackDetailViewModel: ObservableObject {
     }
 
     var formattedDuration: String {
-        guard let millis = track.trackTimeMillis else { return "N/A" }
+        guard let millis = track.trackTimeMillis else { return Strings.Errors.noValue }
         let seconds = millis / 1000
         let minutes = seconds / 60
         let remainingSeconds = seconds % 60
@@ -30,6 +30,6 @@ class TrackDetailViewModel: ObservableObject {
         if let date = isoFormatter.date(from: track.releaseDate) {
             return displayFormatter.string(from: date)
         }
-        return "N/A"
+        return Strings.Errors.noValue
     }
 }
